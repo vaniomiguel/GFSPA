@@ -1,0 +1,19 @@
+.menu {
+  display: flex;
+  justify-content: space-between;
+
+  .option {
+    margin: 0 10px;
+  }
+}
+
+.spacer {
+  flex-grow: 1;
+}
+
+.left-menu,
+.right-menu {
+  display: flex;
+  align-items: center;
+}
+
