@@ -2,15 +2,20 @@
   <!-- Left-aligned menu items -->
   <div class="left-menu">
     <a class="option" href="#">in28minutes</a>
-    <a class="option" routerLink="/welcome/in28minutes">Home</a>
-    <a class="option" routerLink="/todos">Todos</a>
+    @if(hardcodedAuthenticationService.isUserLoggedIn()) {
+      <a class="option" routerLink="/welcome/in28minutes">Home</a>
+      <a class="option" routerLink="/todos">Todos</a>
+    }
   </div>
 
   <!-- Push right-aligned items to the end -->
   <span class="spacer"></span>
 
   <div class="right-menu">
-      <a class="option" routerLink="/login">Login</a>
-      <a class="option" routerLink="/logout">Logout</a>
+    @if(!hardcodedAuthenticationService.isUserLoggedIn()) {
+    <a class="option" routerLink="/login">Login</a>
+    } @else {
+    <a class="option" routerLink="/logout">Logout</a>
+    }
   </div>
 </mat-toolbar>
