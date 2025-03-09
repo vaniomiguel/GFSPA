@@ -40,7 +40,7 @@ public class TodoHardcodedService {
     return null;
   }
 
-  private Optional<Todo> findById(long id) {
+  public Optional<Todo> findById(long id) {
     return todos.stream().filter(todo -> todo.getId() == id).findFirst();
   }
 }

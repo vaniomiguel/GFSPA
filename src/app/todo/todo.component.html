@@ -6,9 +6,11 @@
         <input matInput type="text" formControlName="description">
       </mat-form-field>
 
-      <mat-form-field appearance="outline">
+      <mat-form-field>
         <mat-label>Target Date</mat-label>
-        <input matInput type="date" formControlName="targetDate">
+        <input matInput formControlName="targetDate" [matDatepicker]="picker">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
       <button mat-flat-button type="submit" [disabled]="!todoForm.valid">Save</button>
