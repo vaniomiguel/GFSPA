@@ -1,0 +1,16 @@
+<h1>Todo</h1>
+
+<div [formGroup]="todoForm" class="container" (ngSubmit)="saveTodo()">
+    <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <input matInput type="text" formControlName="description">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Target Date</mat-label>
+        <input matInput type="date" formControlName="targetDate">
+      </mat-form-field>
+
+      <button mat-flat-button type="submit" [disabled]="!todoForm.valid">Save</button>
+
+</div>
