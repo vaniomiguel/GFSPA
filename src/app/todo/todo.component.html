@@ -1,6 +1,6 @@
 <h1>Todo</h1>
 
-<div [formGroup]="todoForm" class="container" (ngSubmit)="saveTodo()">
+<div [formGroup]="todoForm" class="container">
     <mat-form-field appearance="outline">
         <mat-label>Description</mat-label>
         <input matInput type="text" formControlName="description">
@@ -13,6 +13,6 @@
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
-      <button mat-flat-button type="submit" [disabled]="!todoForm.valid">Save</button>
+      <button mat-flat-button type="submit" [disabled]="!todoForm.valid" (click)="saveTodo()">Save</button>
 
 </div>
