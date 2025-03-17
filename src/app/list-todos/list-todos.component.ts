@@ -48,6 +48,10 @@ export class ListTodosComponent implements OnInit{
     });
   }
 
+  addTodo() {
+    this.router.navigate(['todos', -1]);
+  }
+
   private refreshTodos() {
     this.todoService.retrieveAllTodos('in28minutes').subscribe(
       response => this.todos = response

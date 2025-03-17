@@ -19,6 +19,7 @@ import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "**")
 public class TodoResource {
 
   @Autowired

@@ -29,5 +29,10 @@ export class TodoDataService {
       console.log("Todo ", todo)
       return this.httpClient.put<Todo>(`http://localhost:8080/users/${username}/todos/${id}`, todo);
     }    
+
+    createTodo(username: string, todo: Todo) {
+      console.log("Todo ", todo)
+      return this.httpClient.post<Todo>(`http://localhost:8080/users/${username}/todos`, todo);
+    }  
     //Todo deleteById(id: long)
 }
