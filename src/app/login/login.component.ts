@@ -53,4 +53,20 @@ export class LoginComponent {
         },
       });
   }
+
+  handleJWTAuthLogin() {
+    this.basicAuthenticationService
+      .executeJWTAuthenticationService(this.username, this.password)
+      .subscribe({
+        next: (data) => {
+          console.log(data);
+          this.router.navigate(['welcome', this.username]);
+          this.invalidLogin = false;
+        },
+        error: (error) => {
+          console.log(error);
+          this.invalidLogin = true;
+        },
+      });
+  }
 }
