@@ -1,4 +1,4 @@
-package com.pcompass.gfspa.basic.auth;
+package basic.auth;
 
 public class AuthenticationBean {
   private String message;

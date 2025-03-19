@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { API_URL } from '../../app.constants';
 
 export class HelloWorldBean {
   constructor(public message: string) {}
@@ -16,7 +17,7 @@ export class WelcomeDataService {
   constructor() { }
 
   executeHelloWorldBeanService() {
-    return this.httpClient.get<HelloWorldBean>('http://localhost:8080/hello-world-bean');
+    return this.httpClient.get<HelloWorldBean>(`${API_URL}/hello-world-bean`);
   }
 
   executeHelloWorldServiceWithPathVariable(name: string) {
@@ -24,7 +25,7 @@ export class WelcomeDataService {
 
     let headers = new HttpHeaders({Authorization: basicAuthHeaderString})
 
-    return this.httpClient.get<HelloWorldBean>(`http://localhost:8080/hello-world/path-variable/${name}`, {headers});
+    return this.httpClient.get<HelloWorldBean>(`${API_URL}/hello-world/path-variable/${name}`, {headers});
   }
 
   createBasicAuthenticateHttpHeader(): string {
