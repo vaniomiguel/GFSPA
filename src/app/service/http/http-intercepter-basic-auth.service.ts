@@ -6,22 +6,31 @@ import {
   HttpInterceptorFn,
   HttpRequest,
 } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { BasicAuthenticationService } from '../basic-authentication.service';
 
 export const httpIntercepterBasicAuthFn: HttpInterceptorFn = (
   req: HttpRequest<any>,
   next: HttpHandlerFn
 ): Observable<HttpEvent<any>> => {
+  const basicAuthenticationService = inject(BasicAuthenticationService);
+  /*
   let username = 'in28minutes';
   let password = 'dummy';
   let basicAuthHeaderString = 'Basic ' + window.btoa(username + ':' + password);
+  */
+  let basicAuthHeaderString =
+    basicAuthenticationService.getAuthenticatedToken();
+  let username = basicAuthenticationService.getAuthenticatedUser();
 
-  req = req.clone({
-    setHeaders: {
-      Authorization: basicAuthHeaderString,
-    },
-  });
+  if (basicAuthHeaderString && username) {
+    req = req.clone({
+      setHeaders: {
+        Authorization: basicAuthHeaderString,
+      },
+    });
+  }
 
   return next(req);
 };
